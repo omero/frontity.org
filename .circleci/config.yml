@@ -1,0 +1,45 @@
+version: 2.1
+
+orbs:
+  pfe: pantheon-systems/front-end@dev:frontity-node-bridge
+
+workflows:
+  build_and_deploy_main:
+    jobs:
+      - pfe/frontity-build-and-deploy:
+          pre-steps:
+            - pfe/gh-status:
+                state: "pending"
+                target_url: $CIRCLE_BUILD_URL
+                description: "Starting Frontend Build"
+                context: "pantheon/webops"
+          post-steps:
+            - pfe/gh-status:
+                state: "success"
+                target_url: $MAIN_GCP_ENDPOINT
+                description: "Frontend deployed"
+                context: "pantheon/webops"
+          monorepo-config: false
+          filters:
+            branches:
+              only: dev
+  build_and_deploy_pr:
+    jobs:
+      - pfe/frontity-build-and-deploy:
+          pre-steps:
+            - pfe/gh-status:
+                state: "pending"
+                target_url: $CIRCLE_BUILD_URL
+                description: "Starting Preview Frontend Build"
+                context: "pantheon/webops"
+          post-steps:
+            - pfe/gh-status:
+                state: "success"
+                target_url: $GCP_ENDPOINT
+                description: "Preview Frontend deployed"
+                context: "pantheon/webops"
+          monorepo-config: false
+          filters:
+            branches:
+              ignore: dev
+  

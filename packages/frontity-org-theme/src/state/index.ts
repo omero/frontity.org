@@ -3,11 +3,11 @@ import newsletter from "./newsletter";
 
 const state: FrontityOrg["state"]["theme"] = {
   colors: {
-    frontity: "#1f38c5",
+    frontity: "#1f70c5",
     primary: "#0f1c64",
     voidblu: "#0c112b",
     grass: "#82c315",
-    wall: "#f6f6f9",
+    wall: "#e2b5b5",
     purple: "#936af4",
     orange: "#f4c053",
     red: "#f76d64",

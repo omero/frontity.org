@@ -7,7 +7,7 @@ const state: FrontityOrg["state"]["theme"] = {
     primary: "#0f1c64",
     voidblu: "#0c112b",
     grass: "#82c315",
-    wall: "#e2b5b5",
+    wall: "#c8c8cf",
     purple: "#936af4",
     orange: "#f4c053",
     red: "#f76d64",
